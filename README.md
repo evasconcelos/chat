@@ -4,25 +4,21 @@ Simple chat app.
 
 ## How does it work
 
-Uses React and connects via websockets to a socket.io server.
+Uses React and connects via websockets to a simple socket.io server.
 
 ## How could we setup
 
 ### Requirements:
-* `node` v10.16 LTS
-* `yarn` v1.17 Stable
 
-This project was bootstrapped with Create-React-App, you can run it using :
-### `yarn start`
+- `node` v10.16 (or latest LTS)
+- `yarn` v1.17 (or latest Stable)
+- Run `yarn` to download all the dependencies.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### How to run this project
 
-### `yarn test`
+You will need two Terminal tabs to run this :
 
-Launches the test runner in the interactive watch mode.<br>
+- On the first one, run the server: `yarn socketio`
+- On the second tab, run the front-end in development mode: `yarn start`
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+optimal builds for the front-end can be done using `yarn build` - the optimized build files will be located on the `/build` folder and ready to deploy in a real webserver or hosting service like netlify.
