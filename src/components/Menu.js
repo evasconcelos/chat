@@ -2,23 +2,40 @@ import React from 'react';
 import styled from 'styled-components';
 import { atLeastTabletSize } from '../theme';
 
-export default ({ setActivePage }) => (
+export default ({ setActivePage, activePage }) => (
   <NavContainer>
     <List>
       <Item>
-        <ItemText onClick={() => setActivePage('CHAT')}>Chat</ItemText>
+        <ItemText
+          onClick={() => setActivePage('CHAT')}
+          isCurrent={activePage === 'CHAT'}
+        >
+          Chat
+        </ItemText>
       </Item>
       <Item>
-        <ItemText onClick={() => setActivePage('SETTINGS')}>Settings</ItemText>
+        <ItemText
+          onClick={() => setActivePage('SETTINGS')}
+          isCurrent={activePage !== 'CHAT'}
+        >
+          Settings
+        </ItemText>
       </Item>
     </List>
   </NavContainer>
 );
 
 const NavContainer = styled.nav`
-  border: 1px solid red;
+  background: linear-gradient(180deg, ${props => props.theme.bg}, ${props => props.theme.bg2});
+  border-bottom: 1px solid ${props => props.theme.fg};
+  height: 5%;
+  min-height: 40px;
   ${atLeastTabletSize} {
-    border: 1px solid blue;
+    background: linear-gradient(90deg, ${props => props.theme.bg}, ${props => props.theme.bg2});
+    border-bottom: 0;
+    border-right: 1px solid ${props => props.theme.fg};
+    height: auto;
+    min-height: 0;
   }
 `;
 const List = styled.ul`
@@ -26,10 +43,18 @@ const List = styled.ul`
   flex-direction: row;
   justify-content: flex-start;
   padding: 10px 5px;
+  ${atLeastTabletSize} {
+    flex-direction: column;
+  }
 `;
 const Item = styled.li`
   padding-right: 10px;
+  ${atLeastTabletSize} {
+    padding: 10px;
+  }
 `;
 const ItemText = styled.span`
   cursor: pointer;
+  user-select: none;
+  font-weight: ${props => (props.isCurrent ? 'bold' : 'normal')};
 `;

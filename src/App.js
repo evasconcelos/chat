@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import io from 'socket.io-client';
+//import io from 'socket.io-client';
 import Menu from 'components/Menu';
 import ChatMessages from 'components/ChatMessages';
 import Settings from 'components/Settings';
@@ -29,7 +29,7 @@ function App() {
   return (
     <ThemeProvider theme={lightTheme ? theme : darkTheme}>
       <Container>
-        <Menu setActivePage={setActivePage} />
+        <Menu setActivePage={setActivePage} activePage={activePage} />
         {activePage === 'CHAT' ? (
           <ChatMessages />
         ) : (
