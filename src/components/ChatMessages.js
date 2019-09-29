@@ -2,49 +2,46 @@ import React from 'react';
 import styled from 'styled-components';
 import SingleMessage from './SingleMessage';
 import { atLeastTabletSize } from '../theme';
-import bgchat from '../assets/bgchat.png';
+import bgchat from 'assets/bgchat.png';
+import SendMessage from 'components/SendMessage';
+import { useSelector } from 'react-redux';
 
 const scrollToBottom = () => {
   const el = document.getElementById('big-messages-scroll');
   el.scrollTop = el.scrollHeight;
 };
-export default () => (
-  <Container>
-    <Messages id="big-messages-scroll" onClick={() => scrollToBottom()}>
+export default ({ sendMessage }) => {
+  let messageNumber = 0;
+  return (
+    <Container>
       <WhatsappBackground />
-      <SingleMessage
-        self={false}
-        fromNickname="nickname"
-        time={new Date().getTime()}
-      >
-        Hello World
-      </SingleMessage>
-      <SingleMessage
-        self={true}
-        fromNickname="nickname"
-        time={new Date().getTime()}
-      >
-        Hello 123
-      </SingleMessage>
-      <SingleMessage
-        self={false}
-        fromNickname="asdfg"
-        time={new Date().getTime()}
-      >
-        Hello
-      </SingleMessage>
-    </Messages>
-    <Send>
-      <Field type="text" />
-    </Send>
-  </Container>
-);
+      <Messages id="big-messages-scroll" onClick={() => scrollToBottom()}>
+        {useSelector(state =>
+          state.messages.data
+            .slice()
+            .reverse()
+            .map(msg => {
+              messageNumber++;
+              return (
+                <SingleMessage key={messageNumber} {...msg}>
+                  {msg.message}
+                </SingleMessage>
+              );
+            })
+        )}
+      </Messages>
+      <SendMessage sendMessage={sendMessage} />
+    </Container>
+  );
+};
 
 const Container = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   height: 95%;
+  position: relative;
+  background-color: ${props => props.theme.bg2};
   ${atLeastTabletSize} {
     height: auto;
   }
@@ -53,8 +50,9 @@ const Container = styled.div`
 const Messages = styled.div`
   flex-grow: 1;
   overflow-y: scroll;
-  position: relative;
-  background-color: ${props => props.theme.bg2};
+  z-index: 2;
+  display: flex;
+  flex-direction: column-reverse;
 `;
 const WhatsappBackground = styled.div`
   background-image: url(${bgchat});
@@ -64,18 +62,5 @@ const WhatsappBackground = styled.div`
   height: 100%;
   width: 100%;
   opacity: 0.06;
-`;
-
-const Send = styled.div`
-  position: relative;
-  background-color: ${props => props.theme.bg2};
-  padding: 10px 0 5px;
-`;
-const Field = styled.input`
-  width: 100%;
-  height: 30px;
-  padding-left: 10px;
-  border: 2px solid ${props => props.theme.bg2};
-  border-radius: 10px;
-  outline-width: 0;
+  z-index: 1;
 `;
