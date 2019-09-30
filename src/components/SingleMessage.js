@@ -1,16 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default ({ children, self, fromNickname, time }) => {
-  const date = new Date(time);
+export default ({ children, self, fromNickname, time, clockDisplay12h }) => {
+  const date = new Date(time),
+    hours = clockDisplay12h ? date.getHours() % 12 || 12 : date.getHours(),
+    ampm = date.getHours() < 12 || date.getHours() === 24 ? 'AM' : 'PM',
+    timeStr = `${hours}:${date.getMinutes()} ${clockDisplay12h ? ampm : ''}`;
   return (
     <Container self={self}>
       <Bubble self={self}>
         <Nickname self={self}>{fromNickname}</Nickname>
         <Text self={self}>{children}</Text>
-        <Timestamp
-          self={self}
-        >{`${date.getHours()}:${date.getMinutes()}`}</Timestamp>
+        <Timestamp>{timeStr}</Timestamp>
       </Bubble>
     </Container>
   );
@@ -53,13 +54,12 @@ const Nickname = styled.span`
 
 const Text = styled.p`
   margin: 5px 0;
-  padding-right: ${props => (props.self ? '0' : '10em')};
+  padding-right: ${props => (props.self ? '3em' : '10em')};
 `;
 const Timestamp = styled.span`
   color: #ccc;
   font-size: 11px;
 
-  display: ${props => (props.self ? 'none' : 'block')};
   position: absolute;
   bottom: 5px;
   right: 5px;

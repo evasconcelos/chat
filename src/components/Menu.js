@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { atLeastTabletSize } from '../theme';
+import { atLeastTabletSize } from '../util/theme';
+import l from 'util/localization';
 
 export default ({ setActivePage, activePage }) => (
   <NavContainer>
@@ -10,7 +11,7 @@ export default ({ setActivePage, activePage }) => (
           onClick={() => setActivePage('CHAT')}
           isCurrent={activePage === 'CHAT'}
         >
-          Chat
+          {l(`Chat`)}
         </ItemText>
       </Item>
       <Item>
@@ -18,7 +19,7 @@ export default ({ setActivePage, activePage }) => (
           onClick={() => setActivePage('SETTINGS')}
           isCurrent={activePage !== 'CHAT'}
         >
-          Settings
+          {l(`Settings`)}
         </ItemText>
       </Item>
     </List>
@@ -26,12 +27,20 @@ export default ({ setActivePage, activePage }) => (
 );
 
 const NavContainer = styled.nav`
-  background: linear-gradient(180deg, ${props => props.theme.bg}, ${props => props.theme.bg2});
+  background: linear-gradient(
+    180deg,
+    ${props => props.theme.bg},
+    ${props => props.theme.bg2}
+  );
   border-bottom: 1px solid ${props => props.theme.fg};
   height: 5%;
   min-height: 40px;
   ${atLeastTabletSize} {
-    background: linear-gradient(90deg, ${props => props.theme.bg}, ${props => props.theme.bg2});
+    background: linear-gradient(
+      90deg,
+      ${props => props.theme.bg},
+      ${props => props.theme.bg2}
+    );
     border-bottom: 0;
     border-right: 1px solid ${props => props.theme.fg};
     height: auto;

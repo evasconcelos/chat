@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SingleMessage from './SingleMessage';
-import { atLeastTabletSize } from '../theme';
+import { atLeastTabletSize } from '../util/theme';
 import bgchat from 'assets/bgchat.png';
 import SendMessage from 'components/SendMessage';
 import { useSelector } from 'react-redux';
@@ -10,7 +10,7 @@ const scrollToBottom = () => {
   const el = document.getElementById('big-messages-scroll');
   el.scrollTop = el.scrollHeight;
 };
-export default ({ sendMessage }) => {
+export default ({ sendMessage, settings }) => {
   let messageNumber = 0;
   return (
     <Container>
@@ -23,14 +23,19 @@ export default ({ sendMessage }) => {
             .map(msg => {
               messageNumber++;
               return (
-                <SingleMessage key={messageNumber} {...msg}>
+                <SingleMessage
+                  key={messageNumber}
+                  {...msg}
+                  self={msg.uid === settings.uid}
+                  clockDisplay12h={settings.clockDisplay12h}
+                >
                   {msg.message}
                 </SingleMessage>
               );
             })
         )}
       </Messages>
-      <SendMessage sendMessage={sendMessage} />
+      <SendMessage sendMessage={sendMessage} settings={settings} />
     </Container>
   );
 };
