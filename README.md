@@ -22,3 +22,7 @@ You will need two Terminal tabs to run this :
 - On the second tab, run the front-end in development mode: `yarn start`
 
 optimal builds for the front-end can be done using `yarn build` - the optimized build files will be located on the `/build` folder and ready to deploy in a real webserver or hosting service like netlify.
+
+## Unit tests
+
+Very basic unit tests available, to run it : `yarn test`
