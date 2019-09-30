@@ -1,6 +1,6 @@
 const l = str => {
   const settings = JSON.parse(localStorage.getItem('chatSettings'));
-  const currentLanguage = settings.language || 'EN';
+  const currentLanguage = settings ? settings.language : 'EN';
   switch (str) {
     case `Send`:
       return { EN: str, PT: `Enviar` }[currentLanguage];

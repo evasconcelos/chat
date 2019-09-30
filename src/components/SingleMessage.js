@@ -9,9 +9,9 @@ export default ({ children, self, fromNickname, time, clockDisplay12h }) => {
   return (
     <Container self={self}>
       <Bubble self={self}>
-        <Nickname self={self}>{fromNickname}</Nickname>
-        <Text self={self}>{children}</Text>
-        <Timestamp>{timeStr}</Timestamp>
+        <Nickname self={self} data-js-nickname>{fromNickname}</Nickname>
+        <Text self={self} data-js-message>{children}</Text>
+        <Timestamp data-js-timestamp>{timeStr}</Timestamp>
       </Bubble>
     </Container>
   );

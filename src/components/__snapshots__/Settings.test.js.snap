@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshot 1`] = `
+<styled.div>
+  <h1>
+    Settings
+  </h1>
+  <styled.div>
+    <label>
+      <styled.p>
+        User name
+      </styled.p>
+      <input
+        maxLength="20"
+        name="userName"
+        onChange={[Function]}
+        type="text"
+        value="Guest"
+      />
+    </label>
+  </styled.div>
+  <styled.div>
+    <styled.p>
+      Interface Color
+    </styled.p>
+    <label>
+      <input
+        checked={true}
+        name="interfaceColor"
+        onChange={[Function]}
+        type="radio"
+        value="light"
+      />
+      Light
+    </label>
+    <label>
+      <input
+        checked={false}
+        name="interfaceColor"
+        onChange={[Function]}
+        type="radio"
+        value="dark"
+      />
+      Dark
+    </label>
+  </styled.div>
+  <styled.div>
+    <styled.p>
+      Clock Display
+    </styled.p>
+    <label>
+      <input
+        checked={true}
+        name="clockDisplay12h"
+        onChange={[Function]}
+        type="radio"
+        value="12"
+      />
+      12 Hours
+    </label>
+    <label>
+      <input
+        checked={false}
+        name="clockDisplay12h"
+        onChange={[Function]}
+        type="radio"
+        value="24"
+      />
+      24 Hours
+    </label>
+  </styled.div>
+  <styled.div>
+    <styled.p>
+      Send messages on CTRL+ENTER
+    </styled.p>
+    <label>
+      <input
+        checked={true}
+        name="ctrlEnterSendMsg"
+        onChange={[Function]}
+        type="radio"
+        value="yes"
+      />
+      On
+    </label>
+    <label>
+      <input
+        checked={false}
+        name="ctrlEnterSendMsg"
+        onChange={[Function]}
+        type="radio"
+        value="no"
+      />
+      Off
+    </label>
+  </styled.div>
+  <styled.div>
+    <label>
+      <styled.p>
+        Language
+      </styled.p>
+      <select
+        name="language"
+        onChange={[Function]}
+        value="EN"
+      >
+        <option
+          value="EN"
+        >
+          English
+        </option>
+        <option
+          value="PT"
+        >
+          Português
+        </option>
+      </select>
+    </label>
+  </styled.div>
+  <styled.div>
+    <styled.button
+      onClick={[Function]}
+    >
+      Reset to default settings
+    </styled.button>
+  </styled.div>
+</styled.div>
+`;
