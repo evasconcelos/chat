@@ -6,34 +6,32 @@ import bgchat from 'assets/bgchat.png';
 import SendMessage from 'components/SendMessage';
 import { useSelector } from 'react-redux';
 
-const scrollToBottom = () => {
-  const el = document.getElementById('big-messages-scroll');
-  el.scrollTop = el.scrollHeight;
-};
 export default ({ sendMessage, settings }) => {
   let messageNumber = 0;
   return (
     <Container>
       <WhatsappBackground />
-      <Messages id="big-messages-scroll" onClick={() => scrollToBottom()}>
-        {useSelector(state =>
-          state.messages.data
-            .slice()
-            .reverse()
-            .map(msg => {
-              messageNumber++;
-              return (
-                <SingleMessage
-                  key={messageNumber}
-                  {...msg}
-                  self={msg.uid === settings.uid}
-                  clockDisplay12h={settings.clockDisplay12h}
-                >
-                  {msg.message}
-                </SingleMessage>
-              );
-            })
-        )}
+      <Messages id="big-messages-scroll">
+        <MessagesInner>
+          {useSelector(state =>
+            state.messages.data
+              .slice()
+              .reverse()
+              .map(msg => {
+                messageNumber++;
+                return (
+                  <SingleMessage
+                    key={messageNumber}
+                    {...msg}
+                    self={msg.uid === settings.uid}
+                    clockDisplay12h={settings.clockDisplay12h}
+                  >
+                    {msg.message}
+                  </SingleMessage>
+                );
+              })
+          )}
+        </MessagesInner>
       </Messages>
       <SendMessage sendMessage={sendMessage} settings={settings} />
     </Container>
@@ -56,6 +54,9 @@ const Messages = styled.div`
   flex-grow: 1;
   overflow-y: scroll;
   z-index: 2;
+`;
+const MessagesInner = styled.div`
+  z-index: 3;
   display: flex;
   flex-direction: column-reverse;
 `;

@@ -37,6 +37,8 @@ export const socketConnect = dispatch => {
   const socket = io('http://localhost:8000');
   socket.on('CHAT_MSG', function(data) {
     dispatch(addMessage(data));
+    const el = document.getElementById('big-messages-scroll');
+    el.scrollTop = el.scrollHeight;
   });
   socket.on('connect', function() {
     dispatch(connected());
