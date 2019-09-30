@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SingleMessage from './SingleMessage';
-import { atLeastTabletSize } from '../util/theme';
+import { atLeastTabletSize } from '../utils/theme';
 import bgchat from 'assets/bgchat.png';
 import SendMessage from 'components/SendMessage';
 import { useSelector } from 'react-redux';
@@ -56,6 +56,7 @@ const Messages = styled.div`
   z-index: 2;
 `;
 const MessagesInner = styled.div`
+  height: 100%;
   z-index: 3;
   display: flex;
   flex-direction: column-reverse;

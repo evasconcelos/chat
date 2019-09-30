@@ -11,7 +11,6 @@ const l = str => {
         EN: str,
         PT: `Bate-Papo`,
       }[currentLanguage];
-
     case `User name`:
       return {
         EN: str,
@@ -57,7 +56,6 @@ const l = str => {
         EN: str,
         PT: `24 Horas`,
       }[currentLanguage];
-
     case `On`:
       return {
         EN: str,
@@ -68,11 +66,15 @@ const l = str => {
         EN: str,
         PT: `Desligado`,
       }[currentLanguage];
-
     case `Reset to default settings`:
       return {
         EN: str,
         PT: `Voltar a configurações padrão`,
+      }[currentLanguage];
+    case `New Messages!`:
+      return {
+        EN: str,
+        PT: `Novas Mensagens`,
       }[currentLanguage];
     default:
       return str;

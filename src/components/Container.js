@@ -3,9 +3,10 @@ import { socketConnect } from 'redux/messagesSlice';
 import { connect } from 'react-redux';
 import ChatMessages from 'components/ChatMessages';
 import styled, { ThemeProvider } from 'styled-components';
-import theme, { darkTheme, atLeastTabletSize } from 'util/theme';
+import theme, { darkTheme, atLeastTabletSize } from 'utils/theme';
 import Settings from 'components/Settings';
 import Menu from 'components/Menu';
+import setTitleBackFromNewMessages from 'utils/setTitleBackFromNewMessages';
 
 const uid =
   Math.random()
@@ -32,6 +33,7 @@ class ContainerComponent extends Component {
   constructor(props) {
     super(props);
     this.messagesConn = socketConnect(this.props.dispatch);
+    setTitleBackFromNewMessages();
   }
   componentDidMount() {
     if (!JSON.parse(localStorage.getItem('chatSettings'))) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { atLeastTabletSize } from '../util/theme';
-import l from 'util/localization';
+import { atLeastTabletSize } from '../utils/theme';
+import l from 'utils/localization';
 
 export default ({ setActivePage, activePage }) => (
   <NavContainer>

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import l from 'util/localization';
+import l from 'utils/localization';
 
 export default ({ sendMessage, settings }) => {
   const inputEl = useRef(null);

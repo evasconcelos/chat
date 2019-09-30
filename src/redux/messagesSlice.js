@@ -1,5 +1,6 @@
 import { createSlice } from 'redux-starter-kit';
 import io from 'socket.io-client';
+import l from 'utils/localization';
 
 const messagesSlice = createSlice({
   slice: 'messages',
@@ -39,6 +40,9 @@ export const socketConnect = dispatch => {
     dispatch(addMessage(data));
     const el = document.getElementById('big-messages-scroll');
     el.scrollTop = el.scrollHeight;
+    if (document.hidden) {
+      document.title = l(`New Messages!`);
+    }
   });
   socket.on('connect', function() {
     dispatch(connected());
